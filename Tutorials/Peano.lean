@@ -375,5 +375,19 @@ instance : AddCommMagma MyNat where
 instance : AddCommMonoid MyNat where
 
 /- Now we can use the `abel` tactic provided by Mathlib -/
-example (x y z : MyNat) : x + z + y + x + y = y + x + (y + x + z):= by
-  abel
+example (x y z : MyNat) : x + z + y + x + y = y + x + (y + x + z):= by abel
+
+
+/- The framework of type classes allows us to reason about an abstract `AddCommMonoid` -/
+example [AddCommMonoid α] (x y z : α) : x + z + y + x + y = y + x + (y + x + z):= by abel
+
+example {α : Type u} [AddCommMonoid α] (x y z : α) : x + z + y + x + y = y + x + (y + x + z):= by abel
+
+/-
+Exercise:
+1. Define factorial on `MyNat` and the factorial of a number `a` is always larger than `a`.
+
+2. Extend `MyNat` with an order relation `≤` defined by repeated successor, then prove it is reflexive and transitive.
+
+3. Define `MyList` as a new inductive data type, which holds lists of `MyNat` instances. Try to define functions that append to the head and end of the list, the concatenation function, the reverse function. Declare and prove some properties of these functions.
+-/

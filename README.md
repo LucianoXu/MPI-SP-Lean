@@ -10,6 +10,9 @@ Lean Official Website
 The Lean Language Reference Manual
 (https://lean-lang.org/doc/reference/latest/)
 
+Theorem Proving in Lean4
+(https://leanprover.github.io/theorem_proving_in_lean4/)
+
 ## Install
 
 1. Following the instructions on Lean Official Website and install the Lean tool chain. VSCode strongly recommended.
