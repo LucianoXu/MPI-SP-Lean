@@ -201,10 +201,21 @@ example (x y z : MyNat) : (x + y) + z = x + (z + y) := by
 example (x y z : MyNat) : (x + y) + z = x + (z + y) := by
   rw [my_add_assoc, my_add_comm z y]
 
+/- proof by calc -/
 example (x y z : MyNat) : (x + y) + z = x + (z + y) := by
   calc
     (x + y) + z = x + (y + z) := by rw [my_add_assoc]
     _ = x + (z + y)           := by rw [my_add_comm z y]
+
+/- proof by navigation and rewriting -/
+example (x y z : MyNat) : (x + y) + z = x + (z + y) := by
+  rw [my_add_assoc]
+  conv =>
+    lhs -- navigates to the left-hand side of a relation (equality, in this case)
+    congr -- congrence, i.e. x = x' /\ y = y' /\ z = z' /\ => f(x, y, z) = f(x', y', z')
+    · rfl
+    · rw [my_add_comm]
+
 
 
 /- Now we come to multiplication -/
