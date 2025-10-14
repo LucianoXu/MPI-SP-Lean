@@ -388,6 +388,12 @@ instance : AddCommMonoid MyNat where
 /- Now we can use the `abel` tactic provided by Mathlib -/
 example (x y z : MyNat) : x + z + y + x + y = y + x + (y + x + z):= by abel
 
+/- For this example, the `abel` tactic does not know which `AddCommMonoid` to use, which leads to the failure.
+example [AddCommMonoid MyNat] (x y z : MyNat) : x + z + y + x + y = y + x + (y + x + z):= by abel
+example [AddCommMonoid MyNat] (x y z : MyNat) : x + z + y + x + y = y + x + (y + x + z):= sorry
+-/
+
+
 
 /- The framework of type classes allows us to reason about an abstract `AddCommMonoid` -/
 example [AddCommMonoid α] (x y z : α) : x + z + y + x + y = y + x + (y + x + z):= by abel
